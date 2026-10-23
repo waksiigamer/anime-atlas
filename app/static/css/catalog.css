@@ -1,0 +1,239 @@
+/* =========================================================
+   CATALOG PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    padding: 2rem 0;
+}
+
+.hero h1 {
+    margin: 0 0 1rem;
+
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+#q {
+    width: min(650px, 100%);
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.filters {
+    display: block;
+    width: 100%;
+}
+
+#root-filters {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: .65rem;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   FIRST FILTER ROW
+   ========================================================= */
+
+.filter-basic {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    gap: .55rem;
+
+    width: 100%;
+}
+
+
+/*
+ * These containers are only structural wrappers.
+ * Their children participate directly in the flex layout.
+ */
+
+#category_root,
+#subcategory_root,
+#year_root,
+#advanced-root {
+    display: contents;
+}
+
+
+/* =========================================================
+   SECOND FILTER ROW
+   ========================================================= */
+
+.secondary-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: .6rem;
+
+    width: 100%;
+}
+
+#secondary-root {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: .5rem;
+}
+
+
+/* =========================================================
+   CLEAR FILTERS
+   ========================================================= */
+
+#clear {
+    margin-top: .05rem;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+#count {
+    margin: 1rem 0 .75rem;
+}
+
+#status {
+    margin-bottom: .75rem;
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   LOAD MORE
+   ========================================================= */
+
+.load-more {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 12px;
+}
+
+#more {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   AUTO-SCROLL SENTINEL
+   ========================================================= */
+
+#scroll-sentinel {
+    width: 1px;
+    height: 1px;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 640px) {
+    .filters,
+    #root-filters,
+    .filter-basic,
+    .secondary-row,
+    #secondary-root {
+        width: 100%;
+    }
+
+    .filter-basic,
+    .secondary-row {
+        gap: .5rem;
+    }
+
+    /*
+     * Keep collapsibles compact on smaller screens.
+     */
+
+    .collapsible {
+        flex: 0 1 auto;
+        min-width: 0;
+    }
+
+    .collapsible-header {
+        width: auto;
+        min-width: 0;
+
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    .collapsible .collapsible-content,
+    .collapsible .collapsible-content select,
+    .filter-options {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    /*
+     * Keep multiple filters on the same row where possible.
+     */
+
+    #year_root .collapsible-header,
+    #category_root .collapsible-header,
+    #subcategory_root .collapsible-header,
+    #advanced-root .collapsible-header,
+    #tags,
+    #maturity_rating,
+    #min_rating {
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 42vw;
+    }
+
+    /*
+     * Sorting and user status dropdowns can still expand normally.
+     */
+
+    .collapsible[data-key="sort_wrap"] .collapsible-content,
+    .collapsible[data-key="user_status_wrap"] .collapsible-content {
+        width: 100%;
+        min-width: 0;
+        max-height: 180px;
+    }
+
+    .filter-scrollable {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .collapsible-header,
+    .filter-option {
+        height: auto;
+
+        padding: .55rem .7rem;
+
+        font-size: .98rem;
+    }
+}

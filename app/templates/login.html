@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Anime Atlas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/login.css?v=1">
+{% endblock %}
+
+{% block content %}
+<section class="login-page">
+    <div class="login-card">
+        <h1>Entrar</h1>
+
+        <p class="login-demo-notice" role="note">
+            Esta é uma demonstração temporária. Sua conta e suas listas podem ser apagadas durante uma atualização do demo. Se não conseguir entrar, crie um novo usuário.
+        </p>
+
+        {% if error %}
+        <p class="login-error">{{ error }}</p>
+        {% endif %}
+
+        <form method="post" action="/login">
+            <label for="username">Usuário</label>
+            <input id="username" name="username" type="text" autocomplete="username" required>
+
+            <label for="password">Senha</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+
+        <button class="register-open" type="button" id="register-open">
+            Criar usuário
+        </button>
+    </div>
+
+    <dialog
+        class="register-dialog"
+        id="register-dialog"
+        aria-labelledby="register-title"
+        data-open-register="{{ 'true' if open_register else 'false' }}"
+    >
+        <form method="dialog">
+            <button class="register-close" type="submit" aria-label="Fechar">×</button>
+        </form>
+        <h2 id="register-title">Criar usuário</h2>
+        <p>Informe um usuário e uma senha para criar sua conta.</p>
+
+        {% if register_error %}
+        <p class="login-error" role="alert">{{ register_error }}</p>
+        {% endif %}
+
+        <form method="post" action="/register">
+            <label for="register-username">Usuário</label>
+            <input id="register-username" name="username" type="text" autocomplete="username" required>
+
+            <label for="register-password">Senha</label>
+            <input id="register-password" name="password" type="password" autocomplete="new-password" required>
+
+            <button type="submit">Criar usuário</button>
+        </form>
+    </dialog>
+</section>
+
+<script>
+    const registerDialog = document.getElementById("register-dialog");
+    document.getElementById("register-open").addEventListener("click", () => {
+        registerDialog.showModal();
+    });
+
+    registerDialog.addEventListener("click", (event) => {
+        if (event.target === registerDialog) {
+            registerDialog.close();
+        }
+    });
+
+    if (registerDialog.dataset.openRegister === "true") {
+        registerDialog.showModal();
+    }
+</script>
+{% endblock %}

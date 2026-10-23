@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ anime.title }} - Anime Atlas
+{% endblock %}
+
+{% block content %}
+{% macro yes_no(value) -%}
+  {%- if value is none -%}
+    Não informado
+  {%- elif value -%}
+    Sim
+  {%- else -%}
+    Não
+  {%- endif -%}
+{%- endmacro %}
+
+<article class="detail" id="detail" data-anime-id="{{ anime.id }}">
+  {% if anime.catalog_context.hero_image %}
+  <div class="banner-wrap">
+    <img class="banner" src="{{ anime.catalog_context.hero_image }}" alt="">
+    <a class="crunchyroll-button" href="https://www.crunchyroll.com/pt-br/series/{{ anime.id }}" target="_blank"
+      rel="noopener noreferrer" aria-label="Abrir no Crunchyroll">
+      <img src="/static/icons/logo/Crunchyroll_Logo.svg" alt="Crunchyroll">
+    </a>
+  </div>
+  {% endif %}
+
+  <div class="detail-content">
+    {% if anime.catalog_context.card_image %}
+    <img class="poster" src="{{ anime.catalog_context.card_image }}" alt="Pôster de {{ anime.title }}">
+    {% endif %}
+
+    <div>
+      <div class="detail-title-row">
+        <div>
+          <p class="detail-eyebrow">
+            {{ anime.series_metadata.series_launch_year or "Anime" }}
+            {% if anime.type == "series" %} · Série
+            {% elif anime.type in ("movie", "movie_listing") %} · Filme
+            {% elif anime.type %} · {{ anime.type|capitalize }}{% endif %}
+          </p>
+          <h1>{{ anime.title }}</h1>
+        </div>
+        {% if anime.catalog_context.maturity_icon %}
+        <div class="detail-maturity" aria-label="Classificação indicativa {{ anime.series_metadata.maturity_rating }}">
+          <img src="{{ anime.catalog_context.maturity_icon }}" alt="">
+        </div>
+        {% endif %}
+      </div>
+      {% if anime.promo_title and anime.promo_title != anime.title %}
+      <p class="detail-promo-title">{{ anime.promo_title }}</p>
+      {% endif %}
+      {% if anime.description %}
+      <p class="detail-description">{{ anime.description }}</p>
+      {% endif %}
+      <div class="detail-quick-facts" aria-label="Resumo">
+        {% if anime.series_metadata.season_count is not none %}
+        <span>{{ anime.series_metadata.season_count }} temporadas</span>
+        {% endif %}
+        {% if anime.series_metadata.episode_count is not none %}
+        <span>{{ anime.series_metadata.episode_count }} episódios</span>
+        {% endif %}
+        {% if anime.rating.average is not none %}
+        <span class="detail-rating">★ {{ "%.1f"|format(anime.rating.average) }} / 5</span>
+        {% endif %}
+      </div>
+
+      <!-- Detail action buttons (watch later / watched) -->
+      <div class="detail-actions" id="detail-actions" aria-live="polite">
+        <button type="button" id="watch-later-btn" class="detail-action" data-action="watch_later" aria-pressed="false">
+          🔖 Assistir mais tarde
+        </button>
+        <button type="button" id="watched-btn" class="detail-action" data-action="watched" aria-pressed="false">
+          ✓ Assistido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section class="detail-info" aria-labelledby="detail-info-title">
+    <h2 id="detail-info-title">Informações</h2>
+    <dl class="detail-facts">
+      <div>
+        <dt>Ano</dt>
+        <dd>{{ anime.series_metadata.series_launch_year or "Não informado" }}</dd>
+      </div>
+      <div>
+        <dt>Tipo</dt>
+        <dd>
+          {% if anime.type == "series" %}
+          Série
+          {% elif anime.type in ("movie", "movie_listing") %}
+          Filme
+          {% else %}
+          {{ anime.type|capitalize if anime.type else "Não informado" }}
+          {% endif %}
+        </dd>
+      </div>
+      <div>
+        <dt>Temporadas</dt>
+        <dd>{{ anime.series_metadata.season_count if anime.series_metadata.season_count is not none else "Não informado" }}</dd>
+      </div>
+      <div>
+        <dt>Episódios</dt>
+        <dd>{{ anime.series_metadata.episode_count if anime.series_metadata.episode_count is not none else "Não informado" }}</dd>
+      </div>
+      <div>
+        <dt>Nota</dt>
+        <dd>
+          {% if anime.rating.average is not none %}
+          {{ "%.1f"|format(anime.rating.average) }} / 5
+          {% else %}
+          Sem nota
+          {% endif %}
+        </dd>
+      </div>
+      <div>
+        <dt>Título promocional</dt>
+        <dd>{{ anime.promo_title or "Não informado" }}</dd>
+      </div>
+      <div>
+        <dt>Avaliações</dt>
+        <dd>{{ anime.rating.total if anime.rating.total is not none else "Não informado" }}</dd>
+      </div>
+      <div>
+        <dt>Classificação indicativa</dt>
+        <dd>{{ anime.series_metadata.maturity_rating or "Não informado" }}</dd>
+      </div>
+      <div>
+        <dt>Simulcast</dt>
+        <dd>{{ yes_no(anime.series_metadata.is_simulcast) }}</dd>
+      </div>
+      <div>
+        <dt>Última publicação</dt>
+        <dd>
+          {% if anime.last_public %}
+          <time datetime="{{ anime.last_public }}">{{ anime.last_public|replace("T", " ")|replace(".000", "")|replace("Z", " UTC") }}</time>
+          {% else %}
+          Não informada
+          {% endif %}
+        </dd>
+      </div>
+    </dl>
+
+    <div class="detail-lists">
+      <section>
+        <h3>Gêneros</h3>
+        {% if anime.series_metadata.tenant_categories %}
+        <ul class="detail-tags">
+          {% for tag in anime.series_metadata.tenant_categories %}
+          <li>{{ tag }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>Não informado</p>
+        {% endif %}
+      </section>
+      <section>
+        <h3>Descritores de conteúdo</h3>
+        {% if anime.series_metadata.content_descriptors %}
+        <ul class="detail-tags">
+          {% for descriptor in anime.series_metadata.content_descriptors %}
+          <li>{{ descriptor }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>Não informado</p>
+        {% endif %}
+      </section>
+      <section>
+        <h3>Áudio</h3>
+        {% if anime.series_metadata.audio_locales %}
+        <ul class="detail-tags">
+          {% for locale in anime.series_metadata.audio_locales %}
+          <li>{{ locale }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>Não informado</p>
+        {% endif %}
+      </section>
+      <section>
+        <h3>Legendas</h3>
+        {% if anime.series_metadata.subtitle_locales %}
+        <ul class="detail-tags">
+          {% for locale in anime.series_metadata.subtitle_locales %}
+          <li>{{ locale }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>Não informado</p>
+        {% endif %}
+      </section>
+    </div>
+
+    <details class="detail-identifiers">
+      <summary>Identificadores do catálogo</summary>
+      <dl class="detail-facts">
+        <div>
+          <dt>ID do anime</dt>
+          <dd>{{ anime.id }}</dd>
+        </div>
+        <div>
+          <dt>Slug</dt>
+          <dd>{{ anime.slug_title or "Não informado" }}</dd>
+        </div>
+      </dl>
+    </details>
+  </section>
+</article>
+
+{# Include the detail JS module (new file) #}
+<script type="module" src="/static/js/detail.js"></script>
+{% endblock %}

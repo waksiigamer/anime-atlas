@@ -1,0 +1,129 @@
+/* =========================================================
+   GLOBAL / SHARED STYLES
+   ========================================================= */
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   TEXT UTILITIES
+   ========================================================= */
+
+.muted {
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   GENERIC BUTTONS
+   ========================================================= */
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: .7rem 1rem;
+
+    border: 1px solid var(--accent);
+    border-radius: .5rem;
+
+    background: var(--accent);
+    color: #fff;
+
+    font: inherit;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .15s ease;
+}
+
+.primary-button:hover {
+    background: #8b5cf6;
+    border-color: #a78bfa;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: .7rem 1rem;
+
+    border: 1px solid var(--border);
+    border-radius: .5rem;
+
+    background: var(--surface-control);
+    color: #fff;
+
+    font: inherit;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease;
+}
+
+.secondary-button:hover {
+    background: #2b2b43;
+    border-color: #5a5478;
+}
+
+
+/* =========================================================
+   ERROR / MESSAGE
+   ========================================================= */
+
+.error-message {
+    padding: .8rem 1rem;
+
+    border: 1px solid rgba(239, 68, 68, .3);
+    border-radius: .6rem;
+
+    background: rgba(239, 68, 68, .08);
+    color: #fecaca;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loading {
+    color: var(--text-muted);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   HIDDEN
+   ========================================================= */
+
+[hidden] {
+    display: none !important;
+}

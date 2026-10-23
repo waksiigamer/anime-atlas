@@ -1,0 +1,348 @@
+/* =========================================================
+   MAIN CATALOG FILTERS
+   ========================================================= */
+
+.filters {
+    width: 100%;
+}
+
+#root-filters {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 100%;
+
+    gap: .55rem;
+}
+
+
+/* =========================================================
+   PRIMARY FILTER ROW
+   ========================================================= */
+
+.filter-basic {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    width: 100%;
+
+    gap: .5rem;
+}
+
+
+/*
+ * These are structural wrappers.
+ * Their contents participate directly in the flex row.
+ */
+
+#category_root,
+#subcategory_root,
+#year_root,
+#advanced-root {
+    display: contents;
+}
+
+#root-filters .filter-basic .collapsible[data-key="year_wrap"],
+#root-filters .filter-basic .collapsible[data-key="maturity_rating_wrap"],
+#root-filters .filter-basic .collapsible[data-key="min_rating_wrap"] {
+    flex: 0 0 125px;
+}
+
+
+/* =========================================================
+   SECONDARY FILTER ROW
+   ========================================================= */
+
+#root-filters #secondary-root {
+    display: grid;
+    grid-template-columns: repeat(5, 180px);
+    align-items: start;
+    gap: .5rem;
+    width: fit-content;
+
+    font-size: .85rem;
+}
+
+#root-filters #secondary-root .collapsible-header {
+    font-size: .85rem;
+}
+
+#root-filters #secondary-root > .collapsible {
+    width: 180px;
+}
+
+#root-filters #secondary-root > input {
+    width: 180px;
+    box-sizing: border-box;
+    font-size: .85rem;
+}
+
+#root-filters #secondary-root #clear {
+    width: auto;
+    white-space: nowrap;
+    font-size: .85rem;
+}
+
+/* =========================================================
+   CLEAR BUTTON
+   ========================================================= */
+
+#clear {
+    flex: 0 0 auto;
+
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FILTER GROUPS
+   ========================================================= */
+
+#advanced-root,
+#secondary-root {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .filter-basic,
+    .secondary-row,
+    #secondary-root {
+        gap: .4rem;
+    }
+}
+
+
+@media (max-width: 640px) {
+    #root-filters {
+        gap: .45rem;
+    }
+
+    .filter-basic,
+    .secondary-row,
+    #secondary-root {
+        width: 100%;
+    }
+
+    .collapsible {
+        flex: 0 1 auto;
+        min-width: 0;
+    }
+
+    .collapsible-header {
+        width: auto;
+
+        min-width: 0;
+
+        white-space: nowrap;
+    }
+}
+
+/* =========================================================
+   MAIN CATALOG - FILTER LAYOUT
+   ========================================================= */
+
+#root-filters .filter-basic {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill,
+            minmax(260px, 320px));
+
+    align-items: start;
+
+    gap: .5rem;
+
+    width: 100%;
+
+    justify-content: start;
+}
+
+#root-filters .filter-basic>* {
+    min-width: 0;
+    width: 100%;
+}
+
+
+/* =========================================================
+   COLLAPSIBLES
+   ========================================================= */
+
+#root-filters .collapsible {
+    width: 100%;
+    max-width: 320px;
+}
+
+
+/*
+ * Options inside an opened filter are always
+ * displayed vertically.
+ */
+
+#root-filters .collapsible-content .filter-options {
+    display: flex;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: .35rem;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   SECONDARY FILTERS
+   ========================================================= */
+
+#root-filters .secondary-row {
+    display: flex;
+
+    align-items: flex-end;
+    flex-wrap: wrap;
+
+    gap: .5rem;
+
+    width: 100%;
+}
+
+
+/* Number inputs */
+
+#root-filters .secondary-row input[type="number"] {
+    width: 205px;
+}
+
+
+/* Clear button */
+
+#root-filters #clear {
+    width: auto;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+    #root-filters .filter-basic {
+        grid-template-columns:
+            repeat(auto-fill,
+                minmax(240px, 320px));
+    }
+}
+
+@media (max-width: 600px) {
+    #root-filters .filter-basic {
+        grid-template-columns: 1fr;
+    }
+
+    #root-filters .collapsible {
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   MAIN CATALOG - BASIC FILTERS
+   ========================================================= */
+
+#root-filters .filter-basic {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: .5rem;
+
+    width: 100%;
+}
+
+#root-filters .filter-basic>* {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   SECONDARY FILTERS
+   ========================================================= */
+
+#root-filters .secondary-row {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+
+    gap: .5rem;
+
+    width: 100%;
+}
+
+
+/* Number inputs */
+
+#root-filters .secondary-row input[type="number"] {
+    width: 205px;
+}
+
+
+/* Clear button */
+
+#root-filters #clear {
+    width: auto;
+}
+
+/* =========================================================
+   MAIN CATALOG - COMPACT FILTERS
+   ========================================================= */
+
+#root-filters .filter-basic .collapsible-header {
+    padding: .45rem .7rem;
+    font-size: .80rem;
+}
+
+#root-filters .filter-basic .collapsible-header .caret {
+    font-size: .75rem;
+}
+
+#root-filters .filter-basic {
+    gap: .35rem;
+}
+
+#root-filters .collapsible-content .filter-option {
+    padding: .35rem .5rem;
+    font-size: .8rem;
+}
+
+#root-filters .collapsible-content select {
+    font-size: .8rem;
+}
+
+#root-filters .collapsible-content select[multiple] {
+    min-height: 0;
+    height: 120px;
+    padding: .25rem;
+    font-size: .8rem;
+}
+
+#root-filters .collapsible-content select[multiple] option {
+    padding: .25rem .4rem;
+}
+
+#root-filters .collapsible-content .sort-option {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: 0 0 .35rem 0;
+    padding: .45rem .6rem;
+
+    text-align: left;
+}

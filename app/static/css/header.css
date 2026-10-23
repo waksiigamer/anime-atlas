@@ -1,0 +1,177 @@
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 72px;
+    padding: 0 2rem;
+
+    background: #151526;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+header>a {
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    transition: color .15s ease;
+}
+
+header>a:hover {
+    color: #a78bfa;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+header nav {
+    display: flex;
+    align-items: center;
+
+    gap: .45rem;
+}
+
+header nav a {
+    display: inline-flex;
+    align-items: center;
+
+    padding: .55rem .8rem;
+
+    border-radius: .55rem;
+
+    color: #c9c6d8;
+
+    text-decoration: none;
+
+    font-size: .95rem;
+    font-weight: 600;
+
+    transition:
+        background .15s ease,
+        color .15s ease;
+}
+
+header nav a:hover {
+    background: rgba(124, 58, 237, .12);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+header nav form {
+    margin: 0;
+}
+
+header nav form button {
+    padding: .55rem .8rem;
+
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: .55rem;
+
+    background: rgba(255, 255, 255, .04);
+
+    color: #c9c6d8;
+
+    font: inherit;
+    font-size: .95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        color .15s ease,
+        border-color .15s ease;
+}
+
+header nav form button:hover {
+    background: rgba(124, 58, 237, .18);
+
+    border-color: rgba(167, 139, 250, .45);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   REGION SELECTOR
+   ========================================================= */
+
+.region-selector {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: .45rem;
+
+    padding: .45rem .6rem;
+
+    border: 1px solid #45405f;
+    border-radius: .55rem;
+
+    background: #24243a;
+    color: #fff;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease;
+}
+
+.region-selector:hover {
+    background: #2b2b43;
+
+    border-color: #5a5478;
+}
+
+.region-selector img {
+    width: 22px;
+    height: 16px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 640px) {
+    header {
+        min-height: 64px;
+
+        padding: 0 1rem;
+    }
+
+    header nav {
+        gap: .2rem;
+    }
+
+    header nav a,
+    header nav form button {
+        padding: .5rem .6rem;
+
+        font-size: .9rem;
+    }
+}

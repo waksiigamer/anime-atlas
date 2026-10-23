@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="/static/css/catalog.css"
+>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+	<h1>Descubra o que assistir</h1><input id="q" aria-label="Buscar anime"
+		placeholder="Buscar por título, gênero ou sinopse">
+</section>
+<section class="filters">
+	<div id="root-filters">
+		<div class="filter-basic">
+			<div id="year_root"></div>
+			<div id="advanced-root"></div>
+		</div>
+		<div class="secondary-row">
+			<div id="secondary-root" class="secondary-filters"></div>
+			<button id="clear">Limpar filtros</button>
+		</div>
+	</div>
+</section>
+<p id="count"></p>
+<div id="status"></div>
+<section id="grid" class="grid"></section>
+<div class="load-more">
+	<button id="more" hidden>Carregar mais</button>
+</div>
+<script type="module" src="/static/js/catalog.js"></script>
+{% endblock %}

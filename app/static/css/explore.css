@@ -1,0 +1,430 @@
+/* =========================================================
+   EXPLORE PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.explore-header {
+    margin-bottom: 1.25rem;
+}
+
+.explore-header h1 {
+    margin: 0 0 .4rem;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.explore-header p {
+    margin: 0;
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   SEARCH / SORT
+   ========================================================= */
+
+.explore-search {
+    display: flex;
+    align-items: center;
+
+    gap: .6rem;
+
+    margin-bottom: .75rem;
+}
+
+#explore-search {
+    flex: 1;
+
+    min-width: 0;
+}
+
+#explore-sort {
+    width: 160px;
+    flex: 0 0 160px;
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.explore-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    gap: .7rem;
+
+    width: 100%;
+
+    margin-bottom: 1rem;
+}
+
+
+/* =========================================================
+   FIRST FILTER ROW
+   ========================================================= */
+
+.explore-filters {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+
+    gap: .6rem;
+
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.explore-filters > .explore-filter {
+    flex: 0 0 auto;
+}
+
+/* =========================================================
+   YEAR
+   ========================================================= */
+
+#explore-year-root {
+    width: auto;
+    flex: 0 0 auto;
+}
+
+#explore-year-root .collapsible {
+    width: auto;
+}
+
+#explore-year-root .collapsible-header {
+    min-width: 110px;
+}
+
+#explore-year-root .collapsible-content {
+    width: 220px;
+}
+
+#explore-year-root .collapsible-content select {
+    width: 100%;
+}
+
+
+
+/* =========================================================
+   NUMBER FILTERS
+   ========================================================= */
+
+.explore-number-filter,
+.explore-filter:has(#explore-season-count),
+.explore-filter:has(#explore-episode-count) {
+    width: 205px;
+    flex: 0 0 205px;
+}
+
+.explore-filter:has(#explore-season-count),
+.explore-filter:has(#explore-episode-count) {
+    gap: .3rem;
+}
+
+.explore-filter:has(#explore-season-count) label,
+.explore-filter:has(#explore-episode-count) label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+.explore-number-filter label {
+    color: var(--text-muted);
+
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.explore-number-filter input {
+    width: 100%;
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.explore-tags {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    flex: 0 0 100%;
+
+    min-width: 0;
+
+    gap: .35rem;
+
+    order: 20;
+}
+
+.explore-tags > label {
+    display: block;
+
+    width: 100%;
+
+    color: var(--text-muted);
+
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   TAG OPTIONS
+   ========================================================= */
+
+#explore-tags {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: .4rem;
+
+    width: 100% !important;
+    min-width: 0;
+
+    max-height: 120px;
+
+    padding: .15rem .2rem;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+}
+
+#explore-tags .filter-option {
+    display: inline-flex;
+
+    flex: 0 0 auto !important;
+
+    width: auto !important;
+    min-width: max-content;
+
+    padding: .45rem .7rem;
+
+    border: 1px solid var(--border);
+    border-radius: .45rem;
+
+    background: var(--surface-control);
+    color: #fff;
+
+    font-size: .85rem;
+
+    cursor: pointer;
+}
+
+#explore-tags .filter-option:hover {
+    background: #2b2b43;
+    border-color: #5a5478;
+}
+
+#explore-tags .filter-option.selected {
+    background: var(--accent);
+
+    border-color: var(--accent-light);
+}
+
+
+/* =========================================================
+   CLEAR BUTTON
+   ========================================================= */
+
+.explore-filter-actions {
+    display: flex;
+    align-items: flex-end;
+
+    margin-left: auto;
+
+    flex: 0 0 auto;
+}
+
+#explore-clear {
+    height: 42px;
+    flex: 0 0 auto;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESULTS STATUS
+   ========================================================= */
+
+#explore-status {
+    margin: .75rem 0 1rem;
+
+    color: var(--text-muted);
+
+    font-size: .9rem;
+}
+
+
+/* =========================================================
+   RESULTS GRID
+   ========================================================= */
+
+#explore-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(160px, 1fr)
+        );
+
+    gap: 1rem;
+}
+
+#explore-grid .card {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   REGION FLAGS
+   ========================================================= */
+
+.card-regions {
+    display: flex;
+    align-items: center;
+
+    gap: .3rem;
+
+    margin-top: .5rem;
+
+    min-height: 20px;
+}
+
+.card-region-flag {
+    display: block;
+
+    width: 22px;
+    height: 16px;
+
+    object-fit: contain;
+
+    border-radius: 2px;
+
+    flex: 0 0 22px;
+}
+
+
+/* =========================================================
+   LOAD MORE
+   ========================================================= */
+
+#explore-more {
+    display: block;
+
+    margin: 1.5rem auto 0;
+}
+
+
+/* =========================================================
+   SENTINEL
+   ========================================================= */
+
+#explore-sentinel {
+    width: 100%;
+    height: 1px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.explore-empty {
+    padding: 3rem 1rem;
+
+    color: var(--text-muted);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+    .explore-search {
+        flex-wrap: wrap;
+    }
+
+    #explore-search {
+        flex: 1 1 100%;
+    }
+
+    #explore-sort {
+        width: auto;
+        flex: 1 1 180px;
+    }
+
+    .explore-tags {
+        flex-basis: 100%;
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 520px) {
+    .explore-filters {
+        align-items: stretch;
+    }
+
+    .explore-number-filter {
+        width: calc(50% - .3rem);
+        flex: 1 1 calc(50% - .3rem);
+    }
+
+    .explore-tags {
+        min-width: 0;
+    }
+
+    #explore-tags {
+        max-height: 120px;
+    }
+
+    #explore-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: .7rem;
+    }
+
+    .card-region-flag {
+        width: 20px;
+        height: 14px;
+
+        flex-basis: 20px;
+    }
+}
+
+
+/* =========================================================
+   SEARCH AND SORT
+   ========================================================= */
+#explore-search {
+    width: 220px;
+    flex: 0 0 220px;
+}
+
+#explore-sort {
+    width: 165px;
+    flex: 0 0 165px;
+}

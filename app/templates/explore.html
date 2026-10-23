@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}
+Explorar catálogo · Anime Atlas
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/explore.css">
+{% endblock %}
+
+{% block content %}
+
+<section class="explore">
+
+    <div class="explore-header">
+        <div>
+            <h1>Explorar catálogo</h1>
+            <p>
+                Explore todos os animes disponíveis nos catálogos.
+            </p>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <section class="explore-filters">
+
+        <input id="explore-search" type="search" placeholder="Buscar anime..." autocomplete="off">
+
+        <select id="explore-sort">
+            <option value="relevance">Ordem padrão</option>
+            <option value="title_asc">Título A-Z</option>
+            <option value="title_desc">Título Z-A</option>
+            <option value="rating_desc">Maior avaliação</option>
+            <option value="rating_asc">Menor avaliação</option>
+            <option value="year_desc">Mais recentes</option>
+            <option value="year_asc">Mais antigos</option>
+        </select>
+
+        <div class="explore-filter">
+            <div id="explore-year-root"></div>
+        </div>
+
+        <div class="explore-filter">
+            <label for="explore-season-count">
+                Mínimo de temporadas
+            </label>
+
+            <input id="explore-season-count" type="number" min="0" placeholder="Qualquer">
+        </div>
+
+        <div class="explore-filter">
+            <label for="explore-episode-count">
+                Mínimo de episódios
+            </label>
+
+            <input id="explore-episode-count" type="number" min="0" placeholder="Qualquer">
+        </div>
+
+        <button id="explore-clear" type="button">
+            Limpar filtros
+        </button>
+
+        <div class="explore-filter explore-tags">
+            <label>Tags</label>
+
+            <div id="explore-tags" class="filter-options"></div>
+        </div>
+
+    </section>
+    <div id="explore-status" class="explore-status"></div>
+
+    <section id="explore-grid" class="explore-grid" aria-live="polite"></section>
+
+    <div id="explore-sentinel"></div>
+
+    <div class="explore-more">
+        <button id="explore-more" type="button">
+            Carregar mais
+        </button>
+    </div>
+
+</section>
+
+<script type="module" src="/static/js/explore.js"></script>
+
+{% endblock %}

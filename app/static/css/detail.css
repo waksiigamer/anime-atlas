@@ -1,0 +1,410 @@
+/* =========================================================
+   ANIME DETAIL PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   HERO / BANNER
+   ========================================================= */
+
+.detail {
+    --detail-surface: rgba(27, 29, 45, .94);
+}
+
+.banner-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    background: var(--surface-raised);
+}
+
+.banner {
+    display: block;
+    width: 100%;
+    height: clamp(220px, 34vw, 390px);
+    object-fit: cover;
+    object-position: center 35%;
+}
+
+.banner-wrap::after {
+    position: absolute;
+    inset: 35% 0 0;
+    background: linear-gradient(transparent, rgba(16, 17, 27, .45));
+    content: "";
+    pointer-events: none;
+}
+
+.banner-wrap .crunchyroll-button {
+    z-index: 1;
+}
+
+
+/* =========================================================
+   DETAIL CONTENT
+   ========================================================= */
+
+.detail-content {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.75rem;
+    position: relative;
+    width: min(100% - 2rem, 980px);
+    margin: -5.5rem auto 0;
+    padding: 1.25rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    background: var(--detail-surface);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .32);
+    backdrop-filter: blur(14px);
+}
+
+.detail-content > div {
+    min-width: 0;
+    flex: 1;
+}
+
+.detail-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.detail-title-row h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
+.detail-eyebrow {
+    margin: 0 0 .45rem;
+    color: var(--accent-light);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.detail-maturity {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 3.1rem;
+    height: 3.1rem;
+    padding: .35rem;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: .7rem;
+    background: rgba(16, 17, 27, .75);
+    color: var(--text);
+    font-weight: 700;
+}
+
+.detail-maturity img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.detail-promo-title {
+    margin: .6rem 0 0;
+    color: var(--accent-light);
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.detail-description {
+    max-width: 72ch;
+    margin: 1rem 0 0;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.detail-quick-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.detail-quick-facts span {
+    padding: .4rem .7rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .045);
+    color: var(--text-muted);
+    font-size: .9rem;
+}
+
+.detail-quick-facts .detail-rating {
+    border-color: rgba(250, 204, 21, .28);
+    color: #fde68a;
+}
+
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: 1.25rem;
+}
+
+.detail-info {
+    margin: 1.25rem auto 0;
+    padding: clamp(1rem, 3vw, 1.75rem);
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    background: var(--detail-surface);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
+}
+
+.detail-info h2 {
+    margin: 0 0 1.1rem;
+    font-size: 1.5rem;
+}
+
+.detail-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+    gap: .7rem;
+    margin: 0;
+}
+
+.detail-facts > div,
+.detail-lists > section {
+    min-width: 0;
+    padding: .9rem 1rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: .75rem;
+    background: rgba(255, 255, 255, .025);
+}
+
+.detail-facts dt {
+    color: var(--text-muted);
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.detail-facts dd {
+    margin: .35rem 0 0;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+}
+
+.detail-lists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+    gap: .7rem;
+    margin-top: 1.25rem;
+}
+
+.detail-lists h3 {
+    margin: 0 0 .8rem;
+    font-size: .98rem;
+}
+
+.detail-lists p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.detail-tags li {
+    padding: .3rem .65rem;
+    border-radius: 999px;
+    background: rgba(124, 58, 237, .16);
+    color: #ddd6fe;
+    font-size: .85rem;
+    line-height: 1.35;
+}
+
+.detail-identifiers {
+    margin-top: 1.25rem;
+    color: var(--text-muted);
+}
+
+.detail-identifiers summary {
+    width: fit-content;
+    padding: .4rem 0;
+    cursor: pointer;
+}
+
+.detail-identifiers .detail-facts {
+    margin-top: .75rem;
+}
+
+
+/* =========================================================
+   POSTER
+   ========================================================= */
+
+.poster {
+    width: clamp(150px, 22vw, 220px);
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: .8rem;
+    flex: 0 0 auto;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .3);
+}
+
+
+/* =========================================================
+   CRUNCHYROLL
+   ========================================================= */
+
+.crunchyroll-button {
+    position: absolute;
+
+    top: 1rem;
+    right: 1rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 56px;
+    height: 56px;
+
+    padding: .5rem;
+
+    border-radius: .9rem;
+
+    background: rgba(245, 247, 255, .94);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .25);
+
+    text-decoration: none;
+
+    transition:
+        transform .15s ease,
+        opacity .15s ease;
+
+    z-index: 2;
+}
+
+.crunchyroll-button:hover {
+    transform: translateY(-1px);
+    opacity: .96;
+}
+
+.crunchyroll-button img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+dialog {
+    width: min(760px, 92vw);
+
+    padding: 1.25rem;
+
+    border: 1px solid #45405f;
+    border-radius: .8rem;
+
+    background: #1b1d2d;
+    color: #f5f3ff;
+}
+
+dialog::backdrop {
+    background: #000a;
+}
+
+.modal-header,
+.modal-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-actions {
+    justify-content: flex-end;
+
+    margin-top: 1.25rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .detail-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        width: min(100% - 1rem, 980px);
+        margin-top: -2.5rem;
+        padding: 1rem;
+    }
+
+    .poster {
+        width: min(42vw, 180px);
+    }
+
+    .crunchyroll-button {
+        width: 48px;
+        height: 48px;
+
+        top: .75rem;
+        right: .75rem;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+    .banner {
+        height: 230px;
+    }
+
+    .detail-content {
+        margin-top: -1.75rem;
+        padding: .85rem;
+    }
+
+    .poster {
+        width: 135px;
+    }
+
+    .detail-title-row {
+        gap: .5rem;
+    }
+
+    .detail-title-row h1 {
+        font-size: 1.65rem;
+    }
+
+    .detail-maturity {
+        width: 2.6rem;
+        height: 2.6rem;
+    }
+
+    .detail-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

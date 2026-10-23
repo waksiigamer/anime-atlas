@@ -1,0 +1,167 @@
+/* =========================================================
+   REGION MODAL
+   ========================================================= */
+
+#region-modal:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: grid;
+    place-items: center;
+
+    padding: 1rem;
+}
+
+.region-modal-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, .72);
+    backdrop-filter: blur(4px);
+}
+
+.region-modal-content {
+    position: relative;
+    z-index: 1;
+
+    width: min(480px, 92vw);
+
+    padding: 1.5rem;
+
+    border: 1px solid var(--border);
+    border-radius: .9rem;
+
+    background: var(--surface-raised);
+    color: var(--text);
+}
+
+.region-modal-content h2 {
+    margin-top: 0;
+}
+
+.region-modal-close {
+    position: absolute;
+    top: .55rem;
+    right: .65rem;
+
+    padding: .2rem .5rem;
+
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   REGION OPTIONS
+   ========================================================= */
+
+.region-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,
+            minmax(0, 1fr));
+
+    gap: .6rem;
+}
+
+.region-option {
+    display: flex;
+    align-items: center;
+
+    gap: .65rem;
+
+    width: 100%;
+
+    padding: .75rem;
+
+    border: 1px solid var(--border);
+    border-radius: .6rem;
+
+    background: var(--surface-control);
+    color: #fff;
+
+    font: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .1s ease;
+}
+
+.region-option:hover {
+    background: #2b2b43;
+    border-color: #5a5478;
+}
+
+.region-option:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================================================
+   FLAGS
+   ========================================================= */
+
+.region-option img {
+    display: block;
+
+    width: 24px;
+    height: 18px;
+
+    object-fit: contain;
+
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   EXPLORE ALL CATALOGS
+   ========================================================= */
+
+.explore-catalog-button {
+    width: 100%;
+
+    margin-top: .75rem;
+
+    padding: .8rem 1rem;
+
+    border: 1px solid var(--border);
+    border-radius: .6rem;
+
+    background: transparent;
+    color: #fff;
+
+    font: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease;
+}
+
+.explore-catalog-button:hover {
+    background: var(--surface-control);
+    border-color: #5a5478;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+    .region-options {
+        grid-template-columns: 1fr;
+    }
+}

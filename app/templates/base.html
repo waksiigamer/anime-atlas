@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>
+        {% block title %}Anime Atlas{% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+    <link rel="stylesheet" href="/static/css/collapsible.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/filters.css">
+    <link rel="stylesheet" href="/static/css/cards.css?v=2">
+    <link rel="stylesheet" href="/static/css/region.css?v=2">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/detail.css?v=4">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <a href="/">Anime Atlas</a>
+
+        <nav>
+            {% if request.url.path != "/explore" %}
+            <button type="button" id="region-selector" class="region-selector" aria-label="Selecionar catálogo">
+                🇧🇷
+            </button>
+            {% endif %}
+
+            <a href="/watched">Assistidos</a>
+            <a href="/watch-later">Para assistir</a>
+
+            {% if request.session.get("user_id") %}
+            <form method="post" action="/logout">
+                <button type="submit">Sair</button>
+            </form>
+            {% else %}
+            <a href="/login">Entrar</a>
+            {% endif %}
+        </nav>
+    </header>
+    <div id="region-modal" class="region-modal" hidden>
+        <div class="region-modal-backdrop"></div>
+
+        <div class="region-modal-content" role="dialog" aria-modal="true" aria-labelledby="region-modal-title">
+            <button type="button" id="region-modal-close" class="region-modal-close" aria-label="Fechar">
+                ×
+            </button>
+
+            <h2 id="region-modal-title">Escolha o catálogo</h2>
+
+            <div id="region-options" class="region-options"></div>
+            <button type="button" class="explore-catalog-button" onclick="window.location.href='/explore'">
+                🔎 Explorar todo o catálogo
+            </button>
+        </div>
+    </div>
+    <main>{% block content %}{% endblock %}</main>
+    {% if request.url.path != "/explore" %}
+    <script src="/static/js/region.js"></script>
+    {% endif %}
+</body>
+
+</html>

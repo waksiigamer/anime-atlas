@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <h1>{{ title }}</h1>
+</section>
+
+<div id="status"></div>
+<section id="grid" class="grid"></section>
+
+<script>
+    window.USER_LIST_STATUS = "{{ status }}";
+</script>
+<script type="module" src="/static/js/user_list.js"></script>
+{% endblock %}

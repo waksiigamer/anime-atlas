@@ -1,0 +1,189 @@
+/* =========================================================
+   COLLAPSIBLE FILTER
+   ========================================================= */
+
+.collapsible {
+    position: relative;
+    width: 100%;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.collapsible-header {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: .7rem .8rem;
+
+    border: 1px solid var(--border);
+    border-radius: .6rem;
+
+    background: var(--surface-control);
+    color: #fff;
+
+    font: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease;
+}
+
+.collapsible-header:hover {
+    background: #2b2b43;
+    border-color: #5a5478;
+}
+
+
+/* =========================================================
+   CARET
+   ========================================================= */
+
+.collapsible-header .caret {
+    width: 8px;
+    height: 8px;
+
+    margin-left: .75rem;
+
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+
+    transform: rotate(45deg);
+
+    transition:
+        transform .15s ease;
+}
+
+.collapsible.open .collapsible-header .caret {
+    transform: rotate(225deg);
+}
+
+
+/* =========================================================
+   SELECTION INDICATOR
+   ========================================================= */
+
+.collapsible.has-selection
+.collapsible-header {
+    border-color: #8b5cf6;
+}
+
+.collapsible.has-selection
+.collapsible-header::after {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    margin-left: auto;
+    margin-right: .6rem;
+
+    border-radius: 50%;
+
+    background: #a78bfa;
+
+    box-shadow:
+        0 0 8px rgba(167, 139, 250, .5);
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.collapsible-content {
+    display: none;
+
+    width: 100%;
+
+    margin-top: .4rem;
+    padding: .65rem;
+
+    border: 1px solid var(--border);
+    border-radius: .6rem;
+
+    background: #191a29;
+}
+
+.collapsible.open .collapsible-content {
+    display: block;
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.collapsible-content select {
+    width: 100%;
+}
+
+.collapsible-content select[multiple] {
+    min-height: 180px;
+
+    padding: .35rem;
+
+    overflow-y: auto;
+}
+
+.collapsible-content select[multiple] option {
+    padding: .45rem .55rem;
+
+    border-radius: .35rem;
+
+    cursor: pointer;
+}
+
+.collapsible-content select[multiple] option:checked {
+    background: var(--accent);
+    color: #fff;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.collapsible-content input {
+    width: 100%;
+}
+
+
+/* =========================================================
+   FILTER GRID
+   ========================================================= */
+
+.filter-group {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(180px, 1fr)
+        );
+
+    gap: .6rem;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+    .collapsible-content {
+        padding: .5rem;
+    }
+
+    .collapsible-content select[multiple] {
+        min-height: 150px;
+    }
+}

@@ -1,0 +1,215 @@
+/* =========================================================
+   ANIME CARDS
+   ========================================================= */
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(175px, 1fr)
+        );
+
+    gap: 1rem;
+}
+
+.card {
+    background: var(--card);
+
+    border-radius: .7rem;
+    overflow: hidden;
+
+    color: inherit;
+    text-decoration: none;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   CARD IMAGE
+   ========================================================= */
+
+.card img,
+.card .fallback {
+    width: 100%;
+
+    aspect-ratio: 2 / 3;
+
+    object-fit: cover;
+
+    background:
+        linear-gradient(
+            135deg,
+            #312e81,
+            #be185d
+        );
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.card > div {
+    padding: .75rem;
+}
+
+.card h2 {
+    margin: 0 0 .4rem;
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   TAG
+   ========================================================= */
+
+.tag {
+    font-size: .75rem;
+    color: #c4b5fd;
+}
+
+
+/* =========================================================
+   IMAGE WRAPPER
+   ========================================================= */
+
+.card .image-wrap {
+    position: relative;
+}
+
+
+/* =========================================================
+   CARD ACTIONS
+   ========================================================= */
+
+.card-actions {
+    position: absolute;
+
+    top: .6rem;
+    left: .6rem;
+    right: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: .45rem;
+
+    opacity: 0;
+    transform: translateX(6px);
+
+    transition:
+        opacity .15s ease,
+        transform .15s ease;
+
+    z-index: 10;
+}
+
+.card:hover .card-actions {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* =========================================================
+   CARD ACTION BUTTON
+   ========================================================= */
+
+.card-action {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: .55rem;
+
+    background: rgba(20, 20, 32, .88);
+    color: #fff;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(4px);
+
+    transition:
+        background .15s ease,
+        transform .15s ease,
+        border-color .15s ease;
+}
+
+.card-action:hover {
+    background: rgba(55, 52, 80, .95);
+
+    border-color: rgba(255, 255, 255, .35);
+
+    transform: scale(1.06);
+}
+
+.card-action.active {
+    background: #7c3aed;
+
+    border-color: #a78bfa;
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns:
+            repeat(
+                auto-fill,
+                minmax(140px, 1fr)
+            );
+
+        gap: .7rem;
+    }
+
+    .card,
+    .anime-card,
+    .item-card {
+        width: 100%;
+        display: block;
+        padding: .4rem;
+    }
+
+    .card img,
+    .card .image-wrap img,
+    .anime-card img {
+        width: 100%;
+        height: auto;
+
+        object-fit: cover;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .grid {
+        grid-template-columns:
+            repeat(
+                auto-fill,
+                minmax(160px, 1fr)
+            );
+
+        gap: .9rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
